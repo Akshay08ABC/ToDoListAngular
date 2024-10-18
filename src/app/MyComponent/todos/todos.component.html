@@ -1,0 +1,31 @@
+<h4>Add Todo</h4>
+<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+<h4>Your Todo List</h4>
+<!-- <div *ngIf="this.todos.length === 0; else elseBlock">No Todos for a day. Explore your day :).</div>
+<ng-template #elseBlock>
+    <div *ngFor="let todo of todos.slice().reverse()">
+        <app-todo-item [todo] = "todo" (todoDelete)="deleteTodo($event)" (todoChecked)="toggleTodo($event)"></app-todo-item>
+    </div>
+</ng-template> -->
+
+<ul class="nav nav-tabs">
+    <li class="nav-item" [class.active]="tabId === 'personal-tabLink'" (click)="tabChanges('personal-tabLink')">
+        <a class="nav-link" id="personal-tabLink" href="#personaltab">Personal</a>    
+    </li>
+    <li class="nav-item" [class.active]="tabId === 'work-tabLink'" (click)="tabChanges('work-tabLink')">
+        <a class="nav-link" id="work-tabLink" href="#worktab" >Work</a>
+    </li>            
+</ul>
+
+<div class="tab-content">
+    <div id="personaltab" *ngIf="tabId==='personal-tabLink'">
+        <div class="tab-pane" *ngFor="let todo of todos.slice().reverse()">
+            <app-todo-item [todo] = "todo" (todoDelete)="deleteTodo($event)" (todoChecked)="toggleTodo($event)"></app-todo-item>
+        </div>
+    </div>     
+    <div id="worktab" *ngIf="tabId==='work-tabLink'">
+        <div class="tab-pane" *ngFor="let todo of workTodos.slice().reverse()">
+            <app-todo-item [todo] = "todo" (todoDelete)="deleteTodo($event)" (todoChecked)="toggleTodo($event)"></app-todo-item>
+        </div>
+    </div> 
+</div>

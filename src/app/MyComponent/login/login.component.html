@@ -1,0 +1,25 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 formstyle">
+            <form (submit)="onLogin()" [formGroup]="loginForm">
+                <div class="form-group">
+                    <label for="userName">UserName: </label>
+                    <input [ngClass]="{'is-invalid':submitted && loginForm.controls.userName.errors}" formControlName="userName" type="text" class="form-control" placeholder="Please Enter Your Username">
+                    <div *ngIf="submitted && loginForm.controls.userName.errors" class="text-danger">
+                        <div *ngIf="submitted && loginForm.controls.userName.errors.required">Please Enter UserName...</div>                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" [ngClass]="{'is-invalid':submitted && loginForm.controls.password.errors}" formControlName="password" class="form-control" placeholder="Please Enter Your Password">
+                    <div *ngIf="submitted && loginForm.controls.password.errors" class="text-danger">
+                        <div *ngIf="submitted && loginForm.controls.password.errors.required">Please Enter Password...</div>                                               
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <button class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

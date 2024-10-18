@@ -1,0 +1,27 @@
+<div class="container mt-3 addTodo">
+  <form (submit)="onSubmit()" [formGroup]="addTodoForm">
+    <div class="form-group mt-3">    
+      <input [ngClass]="{'is-invalid':submitted && addTodoForm.controls.title.errors}" formControlName="title" type="text" class="form-control" placeholder="Enter Title">
+      <div *ngIf="submitted && addTodoForm.controls.title.errors" class="text-danger">
+        <div *ngIf="submitted && addTodoForm.controls.title.errors.required">Please Enter Title for Todo...</div>        
+      </div>
+    </div>
+    <div class="form-group mt-3">    
+      <input [ngClass]="{'is-invalid':submitted && addTodoForm.controls.descp.errors}" formControlName="descp" type="text" class="form-control" placeholder="Enter Description">
+      <div *ngIf="submitted && addTodoForm.controls.descp.errors" class="text-danger">
+        <div *ngIf="submitted && addTodoForm.controls.descp.errors.required">Please Enter Description for Todo...</div>        
+      </div>
+    </div>  
+    <div class="form-group mt-3">
+      <label for="group">Category:</label>
+      <select class="form-select-md mb-3" formControlName="group"> 
+        <option value="Personal">Personal</option>       
+        <option value="Work">Work</option>        
+      </select> 
+      <div *ngIf="submitted && addTodoForm.controls.group.errors" class="text-danger">
+        <div *ngIf="submitted && addTodoForm.controls.group.errors.required">Please Choose Category</div>        
+      </div> 
+    </div>          
+    <button type="submit" class="btn btn-primary btn-sm">AddTodo</button>
+  </form>
+</div>
